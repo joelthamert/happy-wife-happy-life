@@ -98,6 +98,8 @@ export const GLOBAL_CSS = `
     --aurora-fade:rgba(11,7,16,0.7);
     --logo-tile:rgba(255,255,255,0.94);
     --date-picker-invert:invert(.55);
+    --heart-fill:#ff7a9c;
+    --heart-opacity:.22;
   }
   html[data-theme="light"] {
     --bg:#f4eef6;
@@ -136,6 +138,8 @@ export const GLOBAL_CSS = `
     --aurora-fade:rgba(244,238,246,0.7);
     --logo-tile:rgba(255,255,255,0.94);
     --date-picker-invert:none;
+    --heart-fill:#ff7a9c;
+    --heart-opacity:.30;
   }
 
   @keyframes rise{from{opacity:0;transform:translateY(22px) scale(.985)}to{opacity:1;transform:translateY(0) scale(1)}}
@@ -157,6 +161,9 @@ export const GLOBAL_CSS = `
   .a1{width:480px;height:480px;top:-160px;left:-120px;background:radial-gradient(circle,var(--aurora-1),transparent 65%);animation:drift1 26s ease-in-out infinite}
   .a2{width:420px;height:420px;top:18%;right:-150px;background:radial-gradient(circle,var(--aurora-2),transparent 65%);animation:drift2 32s ease-in-out infinite}
   .a3{width:380px;height:380px;bottom:-100px;left:22%;background:radial-gradient(circle,var(--aurora-3),transparent 65%);animation:drift3 38s ease-in-out infinite}
+  @keyframes floatHeart{0%{transform:translateY(0) translateX(0) rotate(0) scale(.9);opacity:0}12%{opacity:calc(var(--heart-opacity) * var(--h-op,1))}50%{transform:translateY(-58vh) translateX(var(--h-sway,12px)) rotate(8deg) scale(1)}88%{opacity:calc(var(--heart-opacity) * var(--h-op,1))}100%{transform:translateY(-120vh) translateX(0) rotate(-5deg) scale(1.05);opacity:0}}
+  .heart{position:absolute;bottom:-44px;will-change:transform,opacity;animation:floatHeart linear infinite}
+  .heart svg{display:block;width:100%;height:100%}
   *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
   #hwhl-scroll{height:100vh;height:100dvh;padding-bottom:calc(180px + env(safe-area-inset-bottom)) !important}
   input::placeholder,textarea::placeholder{color:var(--placeholder)}
