@@ -1,0 +1,17 @@
+node_modules
+dist
+.DS_Store
+
+# env files (Ticketmaster key etc.)
+.env
+.env.local
+.env.*.local
+
+# secrets / credentials
+client_secret_*.json
+*.rtf
+
+# local assets not needed in repo
+IMG_*.PNG
+PROMPT.md
+*.xlsx

@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#0b0710" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="HWHL" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/icon-180.png" />
+    <title>Happy Wife Happy Life</title>
+    <style>html,body,#root{margin:0;padding:0;background:var(--bg,#0b0710)}</style>
+    <script>
+      // set the theme before first paint to avoid a flash of the wrong mode
+      try {
+        var env = JSON.parse(localStorage.getItem("hwhl-v4") || "null");
+        var theme = (env && env.data && env.data.settings && env.data.settings.theme) || "dark";
+        document.documentElement.dataset.theme = theme;
+        if (theme === "light") document.documentElement.style.background = "#f4eef6";
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
