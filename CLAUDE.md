@@ -1,4 +1,6 @@
-# CLAUDE.md — Happy Wife Happy Life
+# CLAUDE.md — Happy Spouse Happy House
+
+(Storage keys, ICS UIDs, and the `hwhl-*` localStorage namespace keep the `hwhl` prefix — it names the data era, not the brand; renaming would orphan user data.)
 
 ## What this is
 A partner-preference tracker with a liquid-glass UI. Users record what their partner loves (brands, musicians, foods, flowers, scents, sizes), track important dates with countdowns and calendar export, save gift ideas, run recurring reminders, and fill in a profile by flipping question flashcards ("Discover").

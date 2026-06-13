@@ -16,7 +16,7 @@ export const generateICS = (events: ICSEvent[]): string => {
     const dtStart = toICSDate(ev.date);
     const nd = new Date(ev.date + "T00:00:00"); nd.setDate(nd.getDate() + 1);
     const dtEnd = `${nd.getFullYear()}${String(nd.getMonth()+1).padStart(2,"0")}${String(nd.getDate()).padStart(2,"0")}`;
-    ics += `BEGIN:VEVENT\r\nDTSTART;VALUE=DATE:${dtStart}\r\nDTEND;VALUE=DATE:${dtEnd}\r\nSUMMARY:${ev.emoji || ""} ${ev.label}\r\nDESCRIPTION:Added from Happy Wife Happy Life\r\nRRULE:FREQ=YEARLY\r\nUID:hwhl-${ev.id || i}-${dtStart}@hwhl\r\nDTSTAMP:${stamp}\r\nBEGIN:VALARM\r\nTRIGGER:-P7D\r\nACTION:DISPLAY\r\nDESCRIPTION:${ev.label} in 7 days\r\nEND:VALARM\r\nBEGIN:VALARM\r\nTRIGGER:-P1D\r\nACTION:DISPLAY\r\nDESCRIPTION:${ev.label} tomorrow\r\nEND:VALARM\r\nEND:VEVENT\r\n`;
+    ics += `BEGIN:VEVENT\r\nDTSTART;VALUE=DATE:${dtStart}\r\nDTEND;VALUE=DATE:${dtEnd}\r\nSUMMARY:${ev.emoji || ""} ${ev.label}\r\nDESCRIPTION:Added from Happy Spouse Happy House\r\nRRULE:FREQ=YEARLY\r\nUID:hwhl-${ev.id || i}-${dtStart}@hwhl\r\nDTSTAMP:${stamp}\r\nBEGIN:VALARM\r\nTRIGGER:-P7D\r\nACTION:DISPLAY\r\nDESCRIPTION:${ev.label} in 7 days\r\nEND:VALARM\r\nBEGIN:VALARM\r\nTRIGGER:-P1D\r\nACTION:DISPLAY\r\nDESCRIPTION:${ev.label} tomorrow\r\nEND:VALARM\r\nEND:VEVENT\r\n`;
   });
   return ics + "END:VCALENDAR\r\n";
 };
@@ -58,7 +58,7 @@ export const generateEventICS = (e: OneOffEvent): string => {
     "BEGIN:VEVENT\r\n" + dt +
     `SUMMARY:🎟️ ${e.name}\r\n` +
     (location ? `LOCATION:${location}\r\n` : "") +
-    `DESCRIPTION:Saved from Happy Wife Happy Life${e.url ? "\\n" + e.url : ""}\r\n` +
+    `DESCRIPTION:Saved from Happy Spouse Happy House${e.url ? "\\n" + e.url : ""}\r\n` +
     `UID:hwhl-evt-${e.id}@hwhl\r\nDTSTAMP:${stamp}\r\n` +
     "BEGIN:VALARM\r\nTRIGGER:-P1D\r\nACTION:DISPLAY\r\n" +
     `DESCRIPTION:${e.name} tomorrow\r\nEND:VALARM\r\nEND:VEVENT\r\nEND:VCALENDAR\r\n`
@@ -69,7 +69,7 @@ export const downloadEventICS = (e: OneOffEvent): void =>
   downloadFile(generateEventICS(e), `hwhl-${e.name.replace(/[^\w]+/g, "-").slice(0, 40)}.ics`, "text/calendar;charset=utf-8");
 
 export const generateRemindersText = (reminders: Reminder[], partnerName: string): string => {
-  let txt = `Happy Wife Happy Life — Reminders for ${partnerName || "Partner"}\n${"─".repeat(40)}\n\n`;
+  let txt = `Happy Spouse Happy House — Reminders for ${partnerName || "Partner"}\n${"─".repeat(40)}\n\n`;
   reminders.filter(r => r.active).forEach(r => { txt += `${r.emoji} ${r.label}\n   ${r.note} · ${r.frequency}\n\n`; });
   return txt;
 };

@@ -46,7 +46,7 @@ const WelcomeOverlay = ({ onDone, onGoSettings }) => {
       <div style={{ width: "100%", maxWidth: 380 }}>
         <div style={{ textAlign: "center", marginBottom: 28 }}>
           <div style={{ fontSize: 44, marginBottom: 12 }}>💕</div>
-          <h1 style={{ fontFamily: ffd, fontStyle: "italic", fontSize: 28, color: T.ink, margin: "0 0 6px" }}>Happy Wife Happy Life</h1>
+          <h1 style={{ fontFamily: ffd, fontStyle: "italic", fontSize: 28, color: T.ink, margin: "0 0 6px" }}>Happy Spouse Happy House</h1>
           <p style={{ fontFamily: ff, fontSize: 13, color: T.faint, margin: 0, lineHeight: 1.5 }}>Sign in to sync with your partner, or skip to start solo.</p>
         </div>
         <Liquid lift={false} style={{ padding: 20, borderRadius: 22 }}>

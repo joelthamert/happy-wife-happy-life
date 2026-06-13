@@ -40,7 +40,7 @@ const Home = ({ d, up, go, totalPrefs, answeredCount, aN, dismiss, ne, setNe, tn
     <Reveal>
       <Liquid lift={false} style={{ padding: "38px 28px 32px", marginBottom: 16, borderRadius: 30, animation: "heroGlow 7s ease-in-out infinite" }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 16 }}>
-          <div style={eyebrow}>Happy Wife · Happy Life</div>
+          <div style={eyebrow}>Happy Spouse · Happy House</div>
           <button onClick={() => go("settings")} aria-label="Settings" style={{ background: "none", border: "none", cursor: "pointer", fontSize: 15, padding: 0, filter: "grayscale(0.6) opacity(0.55)", transition: "filter .3s" }}
             onMouseEnter={e => e.currentTarget.style.filter = "none"}
             onMouseLeave={e => e.currentTarget.style.filter = "grayscale(0.6) opacity(0.55)"}>⚙️</button>

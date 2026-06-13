@@ -14,8 +14,8 @@ export default defineConfig({
       registerType: "autoUpdate",
       includeAssets: ["favicon.png", "icon-180.png"],
       manifest: {
-        name: "Happy Wife Happy Life",
-        short_name: "HWHL",
+        name: "Happy Spouse Happy House",
+        short_name: "HSHH",
         description: "Track everything your partner loves — preferences, brands, dates, gifts and reminders.",
         theme_color: "#0b0710",
         background_color: "#0b0710",
