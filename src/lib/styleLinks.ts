@@ -39,7 +39,7 @@ export const styleLinks = (
   const q = styleQuery(brand.name, ctx.colors);
   const enc = encodeURIComponent(q);
   return [
-    { name: "LTK", url: `https://www.shopltk.com/search?q=${enc}`, note: "Creator outfits — shop the exact pieces", hero: true },
+    { name: "LTK", url: `https://www.shopltk.com/search?keyword=${enc}`, note: "Creator outfits — shop the exact pieces", hero: true },
     { name: "Pinterest", url: `https://www.pinterest.com/search/pins/?q=${encodeURIComponent(`${q} outfit`)}`, note: "Outfit inspiration boards" },
     { name: "Google Shopping", url: `https://www.google.com/search?tbm=shop&q=${enc}`, note: "Browse & price the pieces" },
   ];

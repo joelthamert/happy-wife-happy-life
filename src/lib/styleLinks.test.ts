@@ -15,14 +15,14 @@ describe("styleLinks", () => {
     const links = styleLinks({ name: "Madewell" });
     expect(links.map(l => l.name)).toEqual(["LTK", "Pinterest", "Google Shopping"]);
     expect(links[0].hero).toBe(true);
-    expect(links[0].url).toBe("https://www.shopltk.com/search?q=Madewell");
+    expect(links[0].url).toBe("https://www.shopltk.com/search?keyword=Madewell");
     expect(links[1].url).toContain("pinterest.com/search/pins");
     expect(links[1].url).toContain("outfit");
     expect(links[2].url).toContain("tbm=shop");
   });
   it("biases every link toward the partner's top colour", () => {
     const links = styleLinks({ name: "Reformation" }, { colors: ["emerald"] });
-    expect(links[0].url).toBe("https://www.shopltk.com/search?q=Reformation%20emerald");
+    expect(links[0].url).toBe("https://www.shopltk.com/search?keyword=Reformation%20emerald");
     expect(links[1].url).toContain("Reformation%20emerald%20outfit");
     expect(links[2].url).toContain("Reformation%20emerald");
   });
