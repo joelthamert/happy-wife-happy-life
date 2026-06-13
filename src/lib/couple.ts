@@ -34,8 +34,29 @@ export const signUpEmail = (email: string, password: string) =>
 export const signInEmail = (email: string, password: string) =>
   supabase().auth.signInWithPassword({ email, password });
 
-export const signInGoogle = () =>
-  supabase().auth.signInWithOAuth({ provider: "google", options: { redirectTo: window.location.origin } });
+const GOOGLE_CLIENT_ID = (import.meta.env?.VITE_GOOGLE_CLIENT_ID as string | undefined) ?? "";
+
+export const signInGoogle = (): Promise<{ error: Error | null }> =>
+  new Promise((resolve) => {
+    const g = (window as any).google;
+    if (!g?.accounts?.id) return resolve({ error: new Error("Google sign-in not loaded — try again in a moment") });
+    g.accounts.id.initialize({
+      client_id: GOOGLE_CLIENT_ID,
+      callback: async (resp: any) => {
+        const { error } = await supabase().auth.signInWithIdToken({ provider: "google", token: resp.credential });
+        resolve({ error: error ? new Error(error.message) : null });
+      },
+    });
+    g.accounts.id.prompt((n: any) => {
+      if (n.isNotDisplayed() || n.isSkippedMoment()) {
+        g.accounts.id.renderButton(
+          Object.assign(document.createElement("div"), { style: "position:fixed;top:-9999px" }),
+          { type: "standard" }
+        );
+        g.accounts.id.prompt();
+      }
+    });
+  });
 
 export const signOut = () => supabase().auth.signOut();
 
