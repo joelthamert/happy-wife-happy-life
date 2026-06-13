@@ -170,7 +170,7 @@ export default function App() {
       <style>{GLOBAL_CSS}</style>
       <Aurora />
       {/* height + bottom padding live in GLOBAL_CSS (#hwhl-scroll) for dvh/safe-area fallbacks */}
-      <div id="hwhl-scroll" style={{ position: "relative", zIndex: 1, maxWidth: 480, margin: "0 auto", padding: "26px 18px 130px", overflowY: "auto", overflowX: "hidden" }}>
+      <div id="hwhl-scroll" style={{ position: "relative", maxWidth: 480, margin: "0 auto", padding: "26px 18px 180px", overflowY: "auto", overflowX: "hidden" }}>
         {pg !== "home" && (
           <button onClick={() => go("home")} style={{ display: "flex", alignItems: "center", gap: 6, background: "none", border: "none", cursor: "pointer", color: T.faint, fontFamily: ff, fontSize: 13, fontWeight: 600, padding: "0 0 18px" }}>← Home</button>
         )}

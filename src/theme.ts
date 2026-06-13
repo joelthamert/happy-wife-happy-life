@@ -158,7 +158,7 @@ export const GLOBAL_CSS = `
   .a2{width:420px;height:420px;top:18%;right:-150px;background:radial-gradient(circle,var(--aurora-2),transparent 65%);animation:drift2 32s ease-in-out infinite}
   .a3{width:380px;height:380px;bottom:-100px;left:22%;background:radial-gradient(circle,var(--aurora-3),transparent 65%);animation:drift3 38s ease-in-out infinite}
   *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-  #hwhl-scroll{height:100vh;height:100dvh;padding-bottom:calc(130px + env(safe-area-inset-bottom)) !important}
+  #hwhl-scroll{height:100vh;height:100dvh;padding-bottom:calc(180px + env(safe-area-inset-bottom)) !important}
   input::placeholder,textarea::placeholder{color:var(--placeholder)}
   ::-webkit-scrollbar{width:3px;height:0}::-webkit-scrollbar-thumb{background:var(--line-soft);border-radius:4px}
   input[type="date"]::-webkit-calendar-picker-indicator{filter:var(--date-picker-invert)}

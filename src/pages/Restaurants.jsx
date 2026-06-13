@@ -68,6 +68,17 @@ const Restaurants = ({ d, up }) => {
     });
   };
 
+  const [cityInput, setCityInput] = useState(d.eventPrefs?.city || "");
+  const setPrefs = (p) => up(x => { x.eventPrefs = { ...(x.eventPrefs || {}), ...p }; });
+  const useMyLocation = () => {
+    if (!navigator.geolocation) return;
+    navigator.geolocation.getCurrentPosition(
+      pos => { setCityInput(""); setPrefs({ latlong: `${pos.coords.latitude.toFixed(4)},${pos.coords.longitude.toFixed(4)}`, city: "" }); setSort("distance"); },
+      () => {},
+    );
+  };
+  const commitCity = (v) => { if (v.trim()) setPrefs({ city: v.trim(), latlong: null }); };
+
   const latlong = d.eventPrefs?.latlong || null;
   const list = filterRestaurants({ cuisine, latlong, sort: sort === "distance" && !latlong ? "rating" : sort });
   const cuisines = cuisinesIn(RESTAURANT_DB);
@@ -93,6 +104,18 @@ const Restaurants = ({ d, up }) => {
   return (
     <div style={{ animation: "rise .55s cubic-bezier(.2,1,.3,1)" }}>
       <PageHead kicker="MICHELIN guide picks" title="Restaurants" />
+
+      <Reveal delay={0.02}>
+        <div style={{ display: "flex", gap: 8, marginBottom: 14 }}>
+          <input value={cityInput} onChange={e => setCityInput(e.target.value)}
+            onKeyDown={e => { if (e.key === "Enter") commitCity(cityInput); }}
+            placeholder={latlong ? "Using your location — type a city to override" : "City or postal code…"}
+            style={glassInput}
+            onFocus={e => { e.target.style.borderColor = "rgba(255,122,156,0.45)"; e.target.style.boxShadow = "inset 0 1px 0 var(--highlight), 0 0 0 3px rgba(255,122,156,0.10)"; }}
+            onBlur={e => { e.target.style.borderColor = "var(--input-border)"; e.target.style.boxShadow = "inset 0 1px 0 var(--highlight)"; if (cityInput.trim() && cityInput.trim() !== (d.eventPrefs?.city || "")) commitCity(cityInput); }} />
+          <button onClick={useMyLocation} aria-label="Use my location" title="Use my location" style={{ ...btnGhost, padding: "13px 16px", fontSize: 16, ...(latlong ? { border: "1px solid rgba(124,232,182,0.30)", color: T.mintText } : {}) }}>📍</button>
+        </div>
+      </Reveal>
 
       {upcoming.length > 0 && (
         <Reveal delay={0.02}>
@@ -187,7 +210,7 @@ const Restaurants = ({ d, up }) => {
             <button key={s.k} onClick={() => !s.off && setSort(s.k)} disabled={s.off}
               style={{ ...pill(sort === s.k && !s.off, "champagne"), padding: "6px 12px", fontSize: 11, opacity: s.off ? 0.35 : 1, cursor: s.off ? "default" : "pointer" }}>{s.l}</button>
           ))}
-          {!latlong && <span style={{ fontFamily: ff, fontSize: 10, color: T.faint }}>set location in Events for distance</span>}
+          {!latlong && <span style={{ fontFamily: ff, fontSize: 10, color: T.faint }}>use location above for distance sort</span>}
         </div>
       </Reveal>
 
